@@ -17,17 +17,17 @@ class HomeClientControllers {
 
     // trang sản phẩm hiện thị view trang chủ
     public function home(){
-       
+        $listCategories = $this->productQuery->getAllCategories();
         $listProductLastes = $this->productQuery->getTop4ProductLastes();
-        
-        // $aophao = $this->productQuery->get_products_by_category_aophao(8, $limit = 8);
-        // $aolen = $this->productQuery->get_products_by_category_aolen(5, $limit = 8);
+        $aophao = $this->productQuery->get_products_by_category_aophao(14);
+        $aolen = $this->productQuery->get_products_by_category_aolen(17);
         // var_dump($aophao) ;
         require_once './views/client/dashboardClient.php';
     }
     public function productDetails()
     {
         $product_id = $_GET['product_id'];
+        $listCategories = $this->productQuery->getAllCategories();
         $product = $this->productQuery->getDetailSan($product_id);
         $variant = $this->productQuery->getProductByVariant($product_id);
         $allComment = $this->commentModel->allComment($product_id);
@@ -36,9 +36,6 @@ class HomeClientControllers {
         //     $product = $this->productQuery->get_product_by_id($product_id);
         //     $variant = $this->productQuery->get_product_by_variant($product_id);
         // }
-        
-
-        
         include "./views/client/product-details.php";
         
     }
@@ -48,11 +45,16 @@ class HomeClientControllers {
     //     $variant = $this->productQuery->get_product_by_variant($product_id);
     //     include './views/client/layout/modalPoduct.php';
     // }
-    public function categoryProductClient($category_id){
+    public function categoryProductClient(){
         
         $listCategories = $this->productQuery->getAllCategories();
         
-        $products = $this->productQuery->getProductsByCategory($category_id);
+        if (isset($_GET['id'])) {
+            $category_id = $_GET['id'];
+            $products = $this->productQuery->getProductsByCategory($category_id);
+        } else {
+            $products = $this->productQuery->getAllProductCate();
+        }
         include './views/client/categoryProductClient.php';
     }
     // 
@@ -68,6 +70,17 @@ class HomeClientControllers {
             unset($_SESSION['myCart']);
             header('Location: ?action=addToCart');
             exit();
+        }
+         // Loại bỏ các sản phẩm bị ẩn khỏi giỏ hàng
+        if (isset($_SESSION['myCart']) && is_array($_SESSION['myCart'])) {
+            foreach ($_SESSION['myCart'] as $key => $value) {
+                $product = $this->productQuery->find($value['product_id']);
+                if (!$product || $product->status == 0) {
+                    unset($_SESSION['myCart'][$key]); // Xóa sản phẩm khỏi giỏ hàng
+                }
+            }
+            // Reset lại các chỉ số của mảng
+            $_SESSION['myCart'] = array_values($_SESSION['myCart']);
         }
         
         // Xử lý khi người dùng thêm sản phẩm vào giỏ hàng

@@ -22,11 +22,11 @@
                         <span class="old_price"><?php echo number_format($product['sale_price'], 0, ',', '.'); ?>đ</span>
                     </div>
                     <div class="add_to_cart  text-center">
-                        <form action="?action=addToCart" method="POST">
-                                <input type="hidden" name="product_id" value="<?php echo $product['product_id'] ?>">
-                                <input type="hidden" name="quantity" value="1">
-                                <button class="btn btn-primary" href="####" name="add_to_cart" >Mua ngay</button>
-                        </form>
+                        <!-- <form action="?action=addToCart" method="POST"> -->
+                                <!-- <input type="hidden" name="product_id" value="<?php echo $product['product_id'] ?>">
+                                <input type="hidden" name="quantity" value="1"> -->
+                                <a class="btn btn-primary" href="?action=product-details&product_id=<?php echo $product['product_id']; ?>" >Mua ngay</a>
+                        <!-- </form> -->
                     </div>
                 </div>
             <?php endforeach; ?>

@@ -176,18 +176,17 @@
                                         <li><a class="active" href="?action=client">Trang chủ</a> </li>
                                         <li><a href="shop.html">Giới thiệu</a></li>
                                         <li>
-                                        <a href="product-details.html">Sản phẩm</a>
+                                        <a href="?action=CategoryProductClient">Sản phẩm</a>
                                         <ul class="sub_menu">
                                             <li>
-                                            <span class="category-title" style="font-size: 20px; text-decoration: underline;">Áo Nam</span>
+                                            <a class="category-title" href="?action=CategoryProductClient" style="font-size: 20px; text-decoration: underline;">Áo Nam</a>
                                             <ul class="category-menu">
-                                                <li><a href="#">Áo thun</a></li>
-                                                <li><a href="#">Áo sơ mi</a></li>
-                                                <li><a href="#">Áo polo</a></li>
-                                                <li><a href="#">Áo dài tay</a></li>
-                                                <li><a href="#">Áo khoác</a></li>
-                                                <li><a href="#">Áo Tanktop</a></li>
-                                                <li><a href="#">Áo thể thao</a></li>
+                                                    <ul class="widget_dropdown_categories collapse show" id="men">
+                                                        <?php foreach ($listCategories as $category): ?>
+                                                            <li><a href="<?= '?action=CategoryProductClient&id='.$category['category_id'] ?>"><?php echo $category['name']; ?></a></li>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                </li>
                                             </ul>
                                             </li>
                                         </ul>

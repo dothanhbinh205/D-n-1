@@ -7,6 +7,15 @@ class registerController{
     }
     public function all_register()
     {
+        if (!isset($_SESSION['name'])) {
+            header('location:?action=login'); // Chuyển hướng đến trang đăng nhập
+            exit();
+        }
+        // Kiểm tra quyền của người dùng phải có role =1 thì mới được vào admin
+        if (!isset($_SESSION['role_id']) || $_SESSION['role_id'] != 0) {
+            header('location:?action=403'); // Chuyển hướng đến trang lỗi không đủ quyền
+            exit();
+        }
         $register = $this->registerModel->all_register();
         require_once './views/admin/login/show-acc.php';
     }

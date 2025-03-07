@@ -157,7 +157,20 @@
                                 <ul class="d-flex">
                                     <li><a href="?action=client">Trang chủ</a> </li>
                                     <li><a href="###">Giới thiệu</a></li>
-                                    <li><a class="" href="###">Sản phẩm</a></li>
+                                    <li><a href="?action=CategoryProductClient">Sản phẩm</a>
+                                        <ul class="sub_menu">
+                                            <li>
+                                            <a class="category-title" href="?action=CategoryProductClient" style="font-size: 20px; text-decoration: underline;">Áo Nam</a>
+                                            <ul class="category-menu">
+                                                    <ul class="widget_dropdown_categories collapse show" id="men">
+                                                        <?php foreach ($listCategories as $category): ?>
+                                                            <li><a href="<?= '?action=CategoryProductClient&id='.$category['category_id'] ?>"><?php echo $category['name']; ?></a></li>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            </li>
+                                        </ul></li>
                                     <li><a href="###">Cửa hàng</a></li>
                                     <li><a href="###">Liên Hệ</a>
                                         <ul class="sub_menu">

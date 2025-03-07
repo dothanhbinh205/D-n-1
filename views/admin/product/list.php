@@ -129,7 +129,7 @@
                             <img style="max-height:100%; max-width:100%;" src="<?=  $product['image'] ?>">
                         </div>
                     </td>
-                    <td> <?= number_format($product['price'], 0, ',', '.') ?> VNĐ </td>
+                    <td> <?= number_format($product['price'], 0, ',', '.') ?> đ </td>
                     <td><?= $product['category_name'] ?></td>
                     <td><?=  $product['created_at'] ?></td>
                     <td>

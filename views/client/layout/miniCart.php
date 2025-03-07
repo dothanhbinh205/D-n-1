@@ -35,9 +35,9 @@ $cartTotal = 0; // Khởi tạo tổng tiền giỏ hàng
                     </div>
 
                     <!-- Nút xóa sản phẩm -->
-                    <div class="cart_remove">
+                    <!-- <div class="cart_remove">
                         <a href="#" data-index="<?= $index ?>"><i class="icon-close icons"></i></a>
-                    </div>
+                    </div> -->
                 </div>
 
             <?php endforeach; ?>

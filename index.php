@@ -150,7 +150,7 @@ switch ($action) {
         // if ($category_id === null) {
         //     die("Danh mục không hợp lệ. Vui lòng chọn một danh mục!");
         // }
-        $HomeClient->categoryProductClient($category_id);
+        $HomeClient->categoryProductClient();
         break;
     case 'show_checkout';
         $checkoutAdmin->showOrderDetails();

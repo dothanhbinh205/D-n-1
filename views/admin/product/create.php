@@ -110,9 +110,9 @@ input {
     <main class="my-5">
         <div class="container">
             <h3 class="text-center">Thêm Sản Phẩm</h3>
-            <form  method="post" style="width:500px; margin:0 auto;"
+            <form  method="post" style="width:1000px; margin:0 auto;"
                 class="mt-3 mb-5" enctype="multipart/form-data" onsubmit="return validateForm()">
-                <div class=" form-group mb-3">
+                <div class="form-group mb-3">
                     <label for="category_id">Tên Danh Mục</label>
                         <select class="form-control" name="category_id" id="category_id">
                             <option value="0" selected disabled>Chọn Danh Mục</option>
